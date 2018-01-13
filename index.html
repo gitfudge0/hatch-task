@@ -25,41 +25,63 @@
     </head>
     <body>
         <div class="container-fluid" id="container" style="padding: 0;">
-            <!-- <div class="row" id="header">
-                <div class="col-md-10 col-lg-10 col-sm-10 col-xs-8">
-                    <img src="assets/img/logo.png" alt="Hatch">
+            <div id="scene">
+                <div data-depth="0.2"><img src="assets/img/background.png" ></div>
+                <div data-depth="0.6"><img src="assets/img/background_2.png" ></div>
+            </div>
+            <div id="header">
+                <img src="assets/img/logo.png" alt="" srcset="">
+                <div id="hamburger_menu">
+                    <img src="assets/img/menu.png" onclick="toggleMenu()">
                 </div>
-                <div class="col-md-2 col-lg-2 col-sm-2 col-xs-4">
-                    <svg class="pull-right" width="40" height="28" viewBox="0 0 40 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                        <title>Menu</title>
-                        <desc>Created using Figma</desc>
-                        <g id="Canvas" transform="translate(-1121 799)">
-                        <g id="Menu">
-                        <g id="Shape">
-                        <use xlink:href="#path0_fill" transform="translate(1131.49 -798.903)"/>
-                        </g>
-                        <g id="Shape">
-                        <use xlink:href="#path1_fill" transform="translate(1121.08 -787.236)"/>
-                        </g>
-                        <g id="Shape">
-                        <use xlink:href="#path2_fill" transform="translate(1131.49 -775.763)"/>
-                        </g>
-                        </g>
-                        </g>
-                        <defs>
-                        <path id="path0_fill" d="M 1.7115 4.66667L 26.9652 4.66667C 27.9102 4.66667 28.6778 3.62133 28.6778 2.33333C 28.6778 1.04533 27.9113 0 26.9652 0L 1.7115 0C 0.7665 0 0 1.04533 0 2.33333C 0 3.62133 0.765333 4.66667 1.7115 4.66667Z"/>
-                        <path id="path1_fill" d="M 36.75 0L 2.33333 0C 1.04533 0 0 1.04533 0 2.33333C 0 3.62133 1.04533 4.66667 2.33333 4.66667L 36.75 4.66667C 38.038 4.66667 39.0833 3.62133 39.0833 2.33333C 39.0833 1.04533 38.038 0 36.75 0Z"/>
-                        <path id="path2_fill" d="M 26.964 0L 1.7115 0C 0.7665 0 0 1.04533 0 2.33333C 0 3.62133 0.7665 4.66667 1.7115 4.66667L 26.9652 4.66667C 27.9102 4.66667 28.6778 3.62133 28.6778 2.33333C 28.6778 1.04533 27.9102 0 26.964 0Z"/>
-                        </defs>
-                    </svg>
-                </div>
-            </div> -->
+            </div>
             <ul id="mainContent">
                 <li>a</li>
                 <li style="margin-left: -4px;">b</li>
                 <li style="margin-left: -4px;">c</li>
                 <li style="margin-left: -4px;">d</li>
             </ul>
+        </div>
+        <div id="menu" style="display: none;">
+            <div class="row">
+                <div class="col-md-12"><span class="pull-right" id="menu-close" onclick="toggleMenu()">X</span></div>
+            </div>
+            <div class="row" id="links">
+                <div class="col-md-12">
+                    <ul>
+                        <li class="selected">Introduction</li>
+                        <li>Our Story</li>
+                        <li>What We Do</li>
+                        <li>Code of School</li>
+                        <li>Built By Hatch</li>
+                        <li>News Ahem!</li>
+                        <li>Contact</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row" id="social">
+                <div class="col-md-4 col-lg-4 col-sm-6 col-xs-6">
+                    <ul>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Twitter</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 col-lg-4 col-sm-6 col-xs-6">
+                    <ul>
+                        <li><a href="#">Dribbble</a></li>
+                        <li><a href="#">Medium</a></li>
+                        <li><a href="#">Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row" style="color: rgba(255, 255, 255, 0.7);    position: fixed;color: rgba(255, 255, 255, 0.7);bottom: 16px;width: 36%;">
+                <div class="col-md-12">
+                    <p class="text-center">
+                        © 2016 Hatch. All rights are reserved
+                    </p>
+                </div>
+            </div>
         </div>
         <script src="assets/js/app.js"></script>
     </body>

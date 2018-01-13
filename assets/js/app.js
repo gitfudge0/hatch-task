@@ -2,11 +2,17 @@
 let container = document.getElementById("container");
 let mainContent = document.getElementById("mainContent");
 let transformDistance = 0;
+let isMenuOpen = false;
+
+// CONFIGS
 var mc = new Hammer.Manager(container, {
 	recognizers: [
 		[Hammer.Swipe,{ direction: Hammer.DIRECTION_ALL }],
 	]
 });
+
+var scene = document.getElementById('scene');
+var parallaxInstance = new Parallax(scene);
 
 
 // FUNCTIONS
@@ -17,7 +23,7 @@ var mc = new Hammer.Manager(container, {
  * @param {int} direction 
  */
 const changeDistance = (val, direction = -1) => {
-    val = val + (direction * 100);
+    val = val + (direction * 200);
     console.log(container.offsetWidth)
     console.log(val)
     if(val > 0) {
@@ -28,6 +34,16 @@ const changeDistance = (val, direction = -1) => {
     } else {
         return val;
     }
+}
+
+const toggleMenu = () => {
+    let menuEl = document.getElementById("menu");
+    if(isMenuOpen) {
+        menuEl.style.display = "none";
+    } else {
+        menuEl.style.display = "block";
+    }
+    isMenuOpen = !isMenuOpen;
 }
 
 mc.on("swipe", function(ev) {
