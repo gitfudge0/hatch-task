@@ -3,6 +3,7 @@ let container = document.getElementById("container");
 let mainContent = document.getElementById("mainContent");
 let transformDistance = 0;
 let isMenuOpen = false;
+let contentChildernCount = mainContent.childElementCount;
 
 // CONFIGS
 var mc = new Hammer.Manager(container, {
@@ -22,20 +23,20 @@ var parallaxInstance = new Parallax(scene);
  * @param {int} val 
  * @param {int} direction 
  */
-const changeDistance = (val, direction = -1) => {
-    val = val + (direction * 200);
-    console.log(container.offsetWidth)
-    console.log(val)
+const changeDistance = (val, direction = -1, distance = 200) => {
+    val = val + (direction * distance);
     if(val > 0) {
         return 0
-    } else if(val < 0 && val < (-1 * container.offsetWidth * 4 + container.offsetWidth)) {
-        console.log(-1 * container.offsetWidth * 4 + container.offsetWidth)
-        return -1 * container.offsetWidth * 4 + container.offsetWidth
+    } else if(val < 0 && val < (-1 * container.offsetWidth * contentChildernCount + container.offsetWidth)) {
+        return -1 * container.offsetWidth * contentChildernCount + container.offsetWidth
     } else {
         return val;
     }
 }
 
+/**
+ * Toggle menu
+ */
 const toggleMenu = () => {
     let menuEl = document.getElementById("menu");
     if(isMenuOpen) {
@@ -46,24 +47,30 @@ const toggleMenu = () => {
     isMenuOpen = !isMenuOpen;
 }
 
-mc.on("swipe", function(ev) {
-    if(ev.direction == 4) {
-        transformDistance = changeDistance(transformDistance, 1);
-    } else if(ev.direction == 2) {
-        transformDistance = changeDistance(transformDistance);
-    }
-    mainContent.style.transform = "translateX(" + transformDistance + "px)"
-})
-
-
+/**
+ * Mouse scroll handler
+ * @param {event} e 
+ */
 const MouseWheelHandler = (e) => {
-    if(e.wheelDelta < 0) {
+    let wheelDelta = -e.wheelDelta || e.detail;
+    if(wheelDelta > 0) {
         transformDistance = changeDistance(transformDistance);
     } else {
         transformDistance = changeDistance(transformDistance, 1);
     }
     mainContent.style.transform = "translateX(" + transformDistance + "px)"
 }
+
+
+mc.on("swipe", function(ev) {
+    if(ev.direction == 4) {
+        transformDistance = changeDistance(transformDistance, 1, container.offsetWidth);
+    } else if(ev.direction == 2) {
+        transformDistance = changeDistance(transformDistance, -1, container.offsetWidth);
+    }
+    mainContent.style.transform = "translateX(" + transformDistance + "px)"
+})
+
 
 
 if (container.addEventListener) {
